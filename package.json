@@ -1,0 +1,27 @@
+{
+  "name": "ember-cli-slack-chat-node-server",
+  "version": "0.0.1",
+  "description": "Server component for ember-cli-slack-chat",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiddler/ember-cli-slack-chat-node-server.git"
+  },
+  "keywords": [
+    "slack"
+  ],
+  "author": "Jussi Kaijalainen, Wingmen Ltd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fiddler/ember-cli-slack-chat-node-server/issues"
+  },
+  "homepage": "https://github.com/fiddler/ember-cli-slack-chat-node-server#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "slack-node": "^0.1.7"
+  }
+}
