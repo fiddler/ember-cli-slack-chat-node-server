@@ -65,7 +65,7 @@ app.post('/message', function(req, res, next) {
     slack.api('chat.postMessage', {
       text:req.body.message,
       channel: req.body.channel,
-      attachment: req.body.attachment
+      attachments: req.body.attachments
     }, function(err, postMessageResponse){
       res.send(postMessageResponse);
     });
