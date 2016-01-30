@@ -6,6 +6,9 @@ var bodyParser = require('body-parser');
 var slackApiToken = process.env.SLACK_API_TOKEN || 'your Slack API token here';
 var slack = new Slack(slackApiToken);
 
+// Setup users you want to invite the created channel
+// Find user ID:s here https://api.slack.com/methods/users.list/test
+var supportUserIds = ['U02UXACCS','U02A60UCV'];
 
 // Setup Express
 var app = express();
@@ -30,7 +33,7 @@ app.get('/channel/:id/messages', function(req, res, next) {
   if( req.params.id ) {
     slack.api('channels.history', {
       channel: req.params.id,
-      oldest: req.query.latest
+      oldest: req.query.oldest
     }, function(err, response) {
       res.send(response);
     });
@@ -45,6 +48,14 @@ app.post('/channels', function(req, res, next) {
     name: req.body.channel
   }, function(err, response) {
     res.send(response);
+
+    // Invite extra users
+    supportUserIds.forEach(function(userid) {
+      slack.api('channels.invite', {
+        channel: response.channel.id,
+        user: userid
+      });
+    });
   });
 });
 
